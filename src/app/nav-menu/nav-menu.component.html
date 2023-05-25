@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" style="position: fixed">
+  <img (click)="goToProfilePage()" alt="logo" class="logo" src="../../assets/peep-feed-nobg.png"/>
+  <span class="spacer"></span>
+  <button *ngIf="authService.isAuthenticated() && userService.isAdmin()" class="button" mat-raised-button
+          routerLink="/admin">Admin panel
+  </button>
+  <button *ngIf="!authService.isAuthenticated()" class="button" id="login-button" mat-raised-button routerLink="/login">
+    Login
+  </button>
+  <button *ngIf="!authService.isAuthenticated()" class="button" color="primary" id="sign-up-button" mat-raised-button
+          routerLink="/sign-up">
+    Sign up
+  </button>
+  <button *ngIf="authService.isAuthenticated()" class="button" mat-raised-button routerLink="/profile">My profile
+  </button>
+  <button (click)="logout()" *ngIf="authService.isAuthenticated()" class="button" mat-raised-button>Logout</button>
+</mat-toolbar>

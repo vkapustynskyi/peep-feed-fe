@@ -101,8 +101,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
   width: 60%;
   height: fit-content;
   padding: 10px;
+}
+
+.row-flex-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  width: 100%;
 }

@@ -3,6 +3,9 @@ import {AuthenticationService} from "../_services/AuthenticationService";
 import {SnackbarService} from "../_services/snackbar.service";
 import {PostDto} from "../_models/PostDto";
 import {PostService} from "../_services/PostService";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {CommentCreationRequest} from "../_models/CommentCreationRequest";
+import {CommentService} from "../_services/CommentService";
 
 @Component({
   selector: 'app-post',
@@ -16,13 +19,21 @@ export class PostComponent implements OnInit {
   @Input() showDelete: boolean = false;
   @Input() showApprove: boolean = false;
   @Input() showDecline: boolean = false;
+  showCommentArea: boolean = false;
+  commentForm!: FormGroup;
+
   constructor(
               private snackbarService: SnackbarService,
               public authService: AuthenticationService,
+              private formBuilder: FormBuilder,
+              private commentService: CommentService,
               private postService: PostService) {
   }
 
   ngOnInit(): void {
+    this.commentForm = this.formBuilder.group({
+      comment: ['']
+    });
   }
 
   public toggleLike(post: PostDto): boolean {
@@ -60,6 +71,26 @@ export class PostComponent implements OnInit {
       .subscribe(() => {
         window.location.reload();
         this.snackbarService.showSuccessSnackBar();
+      })
+  }
+
+  toggleComment() {
+    this.showCommentArea = !this.showCommentArea;
+  }
+
+  commentPost(postId: number) {
+    let comment = this.commentForm.get('comment').value;
+    if (comment?.trim()) {
+      console.log(postId, comment);
+    }
+    const request: CommentCreationRequest = {
+      postId: postId,
+      comment: comment
+    }
+    this.commentService.commentPost(request)
+      .subscribe(() => {
+        this.snackbarService.showSuccessSnackBar();
+        this.commentForm.get('comment').reset();
       })
   }
 }

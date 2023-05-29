@@ -1,9 +1,10 @@
-export interface PostDto {
+export class PostDto {
   id: number;
   text: string;
   status: string;
   likes: number;
-  isLiked: boolean;
+  shares: number;
+  isLiked: boolean = false;
   author: string;
   authorNickname: string;
 }

@@ -11,9 +11,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ErrorInterceptor} from "./_interceptors/error-interceptor";
 import {ApiUrlInterceptor} from "./_interceptors/api-url-interceptor";
 import {HomePageComponent} from "./home-page/home-page.component";
-import {MatButton, MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {LoginPageComponent} from './login-page/login-page.component';
-import {MatDatepicker, MatDatepickerModule} from "@angular/material/datepicker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
@@ -32,11 +32,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {AuthGuard} from "./_guards/AuthGuard";
 import {MatListModule} from "@angular/material/list";
-import {MatDivider} from "@angular/material/divider";
-import { PostComponent } from './post/post.component';
+import {PostComponent} from './post/post.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { AdminPageComponent } from './admin-page/admin-page.component';
+import {AdminPageComponent} from './admin-page/admin-page.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+
 
 @NgModule({
   declarations: [
@@ -74,6 +74,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     FormsModule,
     MatTooltipModule,
     MatSlideToggleModule,
+    MatFormFieldModule
   ],
   providers: [
     {

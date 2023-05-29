@@ -1,4 +1,4 @@
-import {Observable} from "rxjs";
+import {Observable, Subject, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {PostCreationRequest} from "../_models/PostCreationRequest";
@@ -6,11 +6,14 @@ import {PostCreationRequest} from "../_models/PostCreationRequest";
 @Injectable({providedIn: 'root'})
 export class PostService {
 
+  public update$ = new Subject<void>();
+
   constructor(private http: HttpClient) {
   }
 
   public post(request: PostCreationRequest): Observable<any> {
-    return this.http.post("/posts", request);
+    return this.http.post("/posts", request)
+      .pipe(tap(() => this.update$.next()));
   }
 
   public getMyPosts() {

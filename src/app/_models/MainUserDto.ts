@@ -5,4 +5,5 @@ export interface MainUserDto {
   lastName: number;
   nickname: string;
   isEnabled: boolean;
+  role: string
 }

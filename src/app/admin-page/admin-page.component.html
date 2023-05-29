@@ -1,31 +1,33 @@
 <div class="container">
   <div class="tile">
     <mat-tab-group mat-align-tabs="center" style="width: 90%">
-      <mat-tab label="Posts">
+      <mat-tab label="Post Moderation">
         <app-post *ngFor="let post of posts"
                   [showLike]="false"
                   [showShare]="false"
                   [showDelete]="false"
                   [showApprove]="true"
                   [showDecline]="true"
-        ></app-post>
+                  [post]="post"
+                  style="display: flex; align-items: center; justify-content: center">
+        </app-post>
       </mat-tab>
-      <mat-tab label="Users">
+      <mat-tab label="User Management">
         <table mat-table [dataSource]="users" class="mat-elevation-z8" style="width: 100%">
 
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let user"> {{user.firstName + ' ' + user.lastName + ' ' + user.nickname}} </td>
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let user"> {{user.firstName + ' ' + user.lastName}} </td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="nickname">
-            <th mat-header-cell *matHeaderCellDef> Nickname </th>
+            <th mat-header-cell *matHeaderCellDef> Nickname</th>
             <td mat-cell *matCellDef="let user"> {{user.nickname}} </td>
           </ng-container>
 
           <ng-container matColumnDef="isEnabled">
-            <th mat-header-cell *matHeaderCellDef> Nickname </th>
+            <th mat-header-cell *matHeaderCellDef> Nickname</th>
             <td mat-cell *matCellDef="let user">
               <mat-slide-toggle (click)="toggleUserEnable(user)" [checked]="user.isEnabled">Enable</mat-slide-toggle>
             </td>
@@ -33,8 +35,6 @@
           <tr mat-header-row *matHeaderRowDef="['name', 'nickname', 'isEnabled']"></tr>
           <tr mat-row *matRowDef="let row; columns: ['name', 'nickname', 'isEnabled'];"></tr>
         </table>
-
-
       </mat-tab>
     </mat-tab-group>
   </div>

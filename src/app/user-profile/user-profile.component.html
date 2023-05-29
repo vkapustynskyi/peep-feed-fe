@@ -2,8 +2,8 @@
   <div class="tile">
     <div class="tile-content">
       <div class="profile-info">
-        <div alt="Avatar" class="profile-avatar">AM</div>
-        <div class="profile-name">Ad Min</div>
+        <div alt="Avatar" class="profile-avatar">{{profile.firstName?.charAt(0) + ' ' + profile.lastName?.charAt(0)}}</div>
+        <div class="profile-name">{{profile.firstName + ' ' + profile.lastName}}</div>
       </div>
       <button class="right-corner-button" mat-icon-button>
         <mat-icon>edit</mat-icon>

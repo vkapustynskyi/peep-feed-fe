@@ -1,14 +1,15 @@
-<mat-card class="example-card" [ngStyle]="post.status === 'DECLINED' ? {'background-color':'orange'} : {'background-color': 'white'}">
+<mat-card class="example-card"
+          [ngStyle]="post.status === 'DECLINED' ? {'background-color':'orange'} : {'background-color': 'white'}">
   <mat-card-header style="display: flex; flex-direction: row; align-items: center">
     <div mat-card-avatar class="example-header-image">
       <div alt="Avatar" class="profile-avatar">{{post.author}}</div>
     </div>
-    <mat-card-title style="margin-bottom: 0" *ngIf="post.author">@{{post.authorNickname}}</mat-card-title>
+    <mat-card-title style="margin-bottom: 0" *ngIf="post.author">@{{post?.authorNickname}}</mat-card-title>
   </mat-card-header>
   <mat-card-content style="margin-top: 20px">
-      {{post.text}}
+    {{post.text}}
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions class="row-flex-container">
     <button
       *ngIf="showLike && authService.isAuthenticated()"
       (click)="toggleLike(post)"
@@ -17,14 +18,46 @@
       class="favourite-icon"
       color="warn"
       mat-icon-button
-
     >
       <mat-icon>favorite</mat-icon>
     </button>
-    <button *ngIf="showShare && authService.isAuthenticated()" mat-button>SHARE</button>
-    <button (click)="deletePost(post.id)" *ngIf="showDelete" class="right-corner-button" mat-button><mat-icon>delete</mat-icon></button>
-    <mat-icon *ngIf="window.location.href !== 'http://localhost:4200/admin' && post.status === 'MODERATION'" style="position:absolute; bottom: 12px; right: 20px" matTooltip="MODERATION">schedule</mat-icon>
-    <mat-icon (click)="approve(post.id)" *ngIf="showApprove">check_circle_outline</mat-icon>
-    <mat-icon (click)="decline(post.id)" *ngIf="showDecline" style="position:absolute; bottom: 12px; right: 20px">highlight_off</mat-icon>
+    <button
+      *ngIf="showLike && authService.isAuthenticated()"
+      (click)="toggleComment()"
+      [class.active]="showLike && post.isLiked"
+      aria-label="Example icon button with a heart icon"
+      class="comment-icon"
+      color="warn"
+      mat-icon-button
+    >
+      <mat-icon> comment</mat-icon>
+    </button>
+
+    <div *ngIf="authService.isAuthenticated()" class="spacer"></div>
+<!--    <div *ngIf="showShare && authService.isAuthenticated()" class="spacer"></div>-->
+<!--    <button *ngIf="showShare && authService.isAuthenticated()" mat-button>SHARE</button>-->
+    <button (click)="deletePost(post.id)" *ngIf="showDelete" class="right-corner-button" mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+    <mat-icon *ngIf="window.location.href !== 'http://localhost:4200/admin' && post.status === 'MODERATION'"
+              style="position:absolute; bottom: 12px; right: 20px" matTooltip="MODERATION">schedule
+    </mat-icon>
+    <div class="row-flex-container">
+      <mat-icon style="background: limegreen;" (click)="approve(post.id)" *ngIf="showApprove">check_circle_outline
+      </mat-icon>
+      <div class="spacer"></div>
+      <mat-icon style="background: orangered;" (click)="decline(post.id)" *ngIf="showDecline">highlight_off</mat-icon>
+    </div>
   </mat-card-actions>
+  <form [formGroup]="commentForm" (ngSubmit)="commentPost(post.id)" *ngIf="showCommentArea" class="comment-form full-width">
+    <div class="row-flex-container" style="align-items: stretch !important;">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Comment" formControlName="comment">
+      </mat-form-field>
+      <button mat-button>
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </form>
+
 </mat-card>

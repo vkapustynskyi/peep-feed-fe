@@ -25,6 +25,7 @@ export class AdminPageComponent implements OnInit {
     this.postService.getPostsToModerate()
       .subscribe((posts: PostDto[]) => {
         this.posts = posts;
+        console.log(this.posts);
         this.snackbar.showSuccessSnackBar();
       });
     this.userService.getAllUsers()

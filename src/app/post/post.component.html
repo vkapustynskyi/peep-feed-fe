@@ -1,10 +1,10 @@
 <mat-card class="example-card"
           [ngStyle]="post.status === 'DECLINED' ? {'background-color':'orange'} : {'background-color': 'white'}">
   <mat-card-header style="display: flex; flex-direction: row; align-items: center">
-    <div mat-card-avatar class="example-header-image">
-      <div alt="Avatar" class="profile-avatar">{{post.author}}</div>
+    <div mat-card-avatar class="example-header-image" [routerLink]="'/profile/' + post?.author?.id">
+      <div alt="Avatar" class="profile-avatar">{{post.author?.firstName.charAt(0) + post.author?.lastName.charAt(0)}}</div>
     </div>
-    <mat-card-title style="margin-bottom: 0" *ngIf="post.author">@{{post?.authorNickname}}</mat-card-title>
+    <mat-card-title style="margin-bottom: 0" *ngIf="post.author">@{{post?.author?.nickname}}</mat-card-title>
   </mat-card-header>
   <mat-card-content style="margin-top: 20px">
     {{post.text}}

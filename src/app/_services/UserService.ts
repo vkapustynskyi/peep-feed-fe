@@ -26,4 +26,8 @@ export class UserService {
   public toggleUserEnable(id: number): Observable<any> {
     return this.http.patch(`/users/${id}/enable`, null);
   }
+
+  public getById(userId: number): Observable<MyProfileDto> {
+    return this.http.get<MyProfileDto>(`/users/${userId}`)
+  }
 }

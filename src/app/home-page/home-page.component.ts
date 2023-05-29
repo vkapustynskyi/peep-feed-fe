@@ -25,5 +25,4 @@ export class HomePageComponent implements OnInit {
         this.snackbarService.showSuccessSnackBar();
       })
   }
-
 }

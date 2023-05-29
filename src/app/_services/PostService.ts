@@ -20,6 +20,10 @@ export class PostService {
     return this.http.get("/posts/my");
   }
 
+  public getByAuthorId(authorId: number) {
+    return this.http.get(`/posts/by-author/${authorId}`);
+  }
+
   public getFeedPosts() {
     return this.http.get("/posts");
   }

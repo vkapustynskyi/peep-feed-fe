@@ -11,6 +11,7 @@
                   [post]="post"
                   style="display: flex; align-items: center; justify-content: center">
         </app-post>
+        <span class="center-container" style="margin-top: 10px" *ngIf="!posts?.length">No posts to moderate</span>
       </mat-tab>
       <mat-tab label="User Management">
         <table mat-table [dataSource]="users" class="mat-elevation-z8" style="width: 100%">
@@ -29,7 +30,7 @@
           <ng-container matColumnDef="isEnabled">
             <th mat-header-cell *matHeaderCellDef> Nickname</th>
             <td mat-cell *matCellDef="let user">
-              <mat-slide-toggle (click)="toggleUserEnable(user)" [checked]="user.isEnabled">Enable</mat-slide-toggle>
+              <mat-slide-toggle color="primary" (click)="toggleUserEnable(user)" [checked]="user.isEnabled">Enable</mat-slide-toggle>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="['name', 'nickname', 'isEnabled']"></tr>

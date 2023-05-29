@@ -5,11 +5,11 @@
         <div alt="Avatar" class="profile-avatar">{{profile.firstName?.charAt(0) + ' ' + profile.lastName?.charAt(0)}}</div>
         <div class="profile-name">{{profile.firstName + ' ' + profile.lastName}}</div>
       </div>
-      <button class="right-corner-button" mat-icon-button>
+      <button *ngIf="isMyProfile" class="right-corner-button" mat-icon-button>
         <mat-icon>edit</mat-icon>
       </button>
     </div>
-    <div class="tile-content">
+    <div *ngIf="isMyProfile" class="tile-content">
       <mat-list style="cursor: pointer">
         <mat-list-item routerLink="/home">
           <mat-icon>language</mat-icon>
@@ -23,8 +23,8 @@
         <mat-divider></mat-divider>
       </mat-list>
     </div>
-    <h2>My posts</h2>
-    <form (ngSubmit)="post()" [formGroup]="postForm" class="post-area-content">
+    <h2>Posts</h2>
+    <form *ngIf="isMyProfile" (ngSubmit)="post()" [formGroup]="postForm" class="post-area-content">
       <mat-form-field class="post-text-area">
         <mat-label>Peep new post</mat-label>
         <textarea formControlName="content" cdkTextareaAutosize matInput

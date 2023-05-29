@@ -9,6 +9,7 @@ import {AdminPageComponent} from "./admin-page/admin-page.component";
 
 const routes: Routes = [
   {path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile/:userId', component: UserProfileComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'sign-up', component: SignUpPageComponent},

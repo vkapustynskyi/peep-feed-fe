@@ -1,5 +1,6 @@
+import {UserShortDto} from "./UserShortDto";
+
 export interface CommentDto {
   comment: string;
-  author: string;
-  authorNickname: string;
+  author: UserShortDto;
 }

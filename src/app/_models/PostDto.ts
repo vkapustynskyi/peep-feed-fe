@@ -1,3 +1,5 @@
+import {UserShortDto} from "./UserShortDto";
+
 export class PostDto {
   id: number;
   text: string;
@@ -5,6 +7,5 @@ export class PostDto {
   likes: number;
   shares: number;
   isLiked: boolean = false;
-  author: string;
-  authorNickname: string;
+  author: UserShortDto;
 }

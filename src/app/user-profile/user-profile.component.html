@@ -2,8 +2,8 @@
   <div class="tile">
     <div class="tile-content">
       <div class="profile-info">
-        <div alt="Avatar" class="profile-avatar">{{profile.firstName?.charAt(0) + ' ' + profile.lastName?.charAt(0)}}</div>
-        <div class="profile-name">{{profile.firstName + ' ' + profile.lastName}}</div>
+        <div alt="Avatar" class="profile-avatar">{{profile?.firstName?.charAt(0) + ' ' + profile?.lastName?.charAt(0)}}</div>
+        <div class="profile-name">{{profile?.firstName + ' ' + profile?.lastName}}</div>
       </div>
       <button *ngIf="isMyProfile" class="right-corner-button" mat-icon-button>
         <mat-icon>edit</mat-icon>
@@ -35,7 +35,7 @@
     <app-post *ngFor="let post of posts" [post]="post"
               [showLike]="false"
               [showShare]="false"
-              [showDelete]="true"
+              [showDelete]="isMyProfile && true"
     ></app-post>
   </div>
 </div>

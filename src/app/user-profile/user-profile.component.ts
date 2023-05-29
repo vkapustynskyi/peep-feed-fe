@@ -35,7 +35,6 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     let userId = +getParamFromRoute(this.activatedRoute.snapshot, 'userId', RouteParamTypes.params);
-    console.log(userId);
     if (userId) {
       this.isMyProfile = false;
       this.userService.getById(userId)

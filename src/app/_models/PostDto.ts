@@ -1,4 +1,4 @@
-export interface ProductDto {
+export interface PostDto {
   uuid: string;
   name: string;
   description: string;

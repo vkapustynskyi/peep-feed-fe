@@ -29,8 +29,11 @@ import {NgOptimizedImage} from "@angular/common";
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatIconModule} from "@angular/material/icon";
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
 import {AuthGuard} from "./_guards/AuthGuard";
+import {MatListModule} from "@angular/material/list";
+import {MatDivider} from "@angular/material/divider";
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import {AuthGuard} from "./_guards/AuthGuard";
     HomePageComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import {AuthGuard} from "./_guards/AuthGuard";
     BadGatewayRoutingModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule,
   ],
   providers: [
     {

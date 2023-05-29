@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  posts: any = [
+    {isFavourite: false, description: "asdasd", imgUrl: null, name: "Good name", price: 12, uuid: 'wewerwer32343f3rf'},
+    {isFavourite: true, description: "asdasd", imgUrl: null, name: "Good name", price: 12, uuid: 'wewerwer32343f3rf'},
+    {isFavourite: false, description: "asdasd", imgUrl: null, name: "Good name", price: 12, uuid: 'wewerwer32343f3rf'},
+    {isFavourite: false, description: "asdasd", imgUrl: null, name: "Good name", price: 12, uuid: 'wewerwer32343f3rf'},
+  ];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

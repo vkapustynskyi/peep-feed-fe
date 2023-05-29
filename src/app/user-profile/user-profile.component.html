@@ -1,16 +1,40 @@
 <div class="container">
   <mat-grid-list cols="6" rowHeight="270px" gutterSize="20px">
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <div class="profile-info">
-        <div alt="Avatar" class="profile-avatar">AM</div>
-        <div class="profile-name">Ad Min</div>
+      <div class="tile-content">
+        <div class="profile-info">
+          <div alt="Avatar" class="profile-avatar">AM</div>
+          <div class="profile-name">Ad Min</div>
+        </div>
+        <button class="edit-button" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
       </div>
-      <button aria-label="Example icon button with a vertical three dot icon" mat-icon-button>
-        <mat-icon>edit</mat-icon>
-      </button>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="3">
-      <h1>Bte</h1>
+      <div class="tile-content-posts">
+        <h2>My posts</h2>
+        <div class="post-area-content">
+          <mat-form-field class="post-text-area">
+            <mat-label>Peep new post</mat-label>
+            <textarea cdkTextareaAutosize matInput placeholder="Ex. It makes me feel..."></textarea>
+          </mat-form-field>
+          <button mat-flat-button color="primary">Post</button>
+        </div>
+        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+      <div class="tile-content">
+        <mat-list style="cursor: pointer">
+          <mat-list-item routerLink="/home"><mat-icon>language</mat-icon> Feed</mat-list-item>
+          <mat-divider></mat-divider>
+<!--          <mat-list-item routerLink="/"><mat-icon>article</mat-icon> Posts</mat-list-item>-->
+<!--          <mat-divider></mat-divider>-->
+          <mat-list-item routerLink="/admin"><mat-icon>fact_check</mat-icon> Moderating posts</mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

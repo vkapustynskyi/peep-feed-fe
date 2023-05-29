@@ -1,0 +1,73 @@
+<div class="page-content">
+  <div class="center-container form-container">
+    <div class="form" [formGroup]="signUpForm">
+      <div class="title">Sign up</div>
+      <div class="subtitle">You can create account if you don't have one</div>
+      <div class="input-container ic1">
+        <input id="nickname"
+               formControlName="nickname"
+               class="input"
+               type="text"
+               placeholder=" "
+               autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="nickname" class="placeholder">Nickname</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="firstName"
+               formControlName="firstName"
+               class="input"
+               type="text"
+               placeholder=" "
+               autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="firstName" class="placeholder">First name</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="lastName"
+               formControlName="lastName"
+               class="input"
+               type="text"
+               placeholder=" "
+               autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="lastName" class="placeholder">Last name</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="birthday"
+               formControlName="birthday"
+               matInput
+               class="input"
+               type="date"
+               autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="birthday" class="placeholder">Birthday</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="password"
+               formControlName="password"
+               class="input"
+               type="password"
+               placeholder=" "
+               autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="password" class="placeholder">Password</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="confirmPassword"
+               formControlName="confirmPassword"
+               class="input"
+               type="password"
+               placeholder=" "
+               autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="confirmPassword" class="placeholder">Confirm password</label>
+      </div>
+      <button [disabled]="loading" mat-flat-button color="primary" class="submit" (click)="signUp()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Sign up
+      </button>
+    </div>
+  </div>
+</div>
+

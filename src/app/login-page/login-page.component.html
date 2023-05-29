@@ -1,18 +1,20 @@
-<div class="center-container" style="background: lightgray">
-  <div class="form">
-    <div class="title">Login</div>
-    <div class="subtitle">You can create account if you don't have one</div>
-    <div class="input-container ic1">
-      <input id="nickname" class="input" type="text" placeholder=" " autocomplete="off"/>
-      <div class="cut"></div>
-      <label for="nickname" class="placeholder">Nickname</label>
+<div class="page-content">
+  <div class="center-container form-container">
+    <div class="form" [formGroup]="loginForm">
+      <div class="title">Login</div>
+      <div class="subtitle">Authenticate to have all the benefits</div>
+      <div class="input-container ic1">
+        <input formControlName="nickname" id="nickname" class="input" type="text" placeholder=" " autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="nickname" class="placeholder">Nickname</label>
+      </div>
+      <div class="input-container ic2">
+        <input formControlName="password" id="password" class="input" type="password" placeholder=" " autocomplete="off"/>
+        <div class="cut"></div>
+        <label for="password" class="placeholder">Password</label>
+      </div>
+      <button (click)="login()" class="submit" color="primary" mat-flat-button>Login</button>
     </div>
-    <div class="input-container ic2">
-      <input id="password" class="input" type="password" placeholder=" " autocomplete="off"/>
-      <div class="cut"></div>
-      <label for="password" class="placeholder">Password</label>
-    </div>
-    <button mat-flat-button color="primary" class="submit">Login</button>
   </div>
 </div>
 

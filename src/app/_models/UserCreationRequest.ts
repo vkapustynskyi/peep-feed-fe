@@ -1,7 +1,7 @@
 export interface UserCreationRequest {
   firstName: string;
   lastName: string;
-  email: string;
-  birthDay: string;
+  nickname: string;
+  birthday: string;
   password: string;
 }

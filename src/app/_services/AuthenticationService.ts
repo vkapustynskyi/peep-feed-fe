@@ -34,8 +34,8 @@ export class AuthenticationService {
     return this.isAuthenticatedSubject$.value;
   }
 
-  login(email: string, password: string) {
-    return this.http.post<any>(`/auth`, {email, password})
+  login(nickname: string, password: string) {
+    return this.http.post<any>(`/auth`, {nickname, password})
       .pipe(map(token => {
         localStorage.setItem('token', token.value);
         this.isAuthenticatedSubject$.next(true);

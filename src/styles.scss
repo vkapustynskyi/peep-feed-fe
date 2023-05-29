@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/variables";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 70px 0 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: $light-grey;
+}
 
 .spacer {
   flex: 1 1 auto;
@@ -22,10 +30,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: white !important;
 }
 
+.site-header {
+  overflow: hidden;
+  z-index: 999999;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #ff6666;
+  height: 70px;
+}
+
+.page-content {
+  height: 93%;
+}
+
 .center-container {
   display: flex;
-  height: 100%;
-  width: 100%;
   justify-content: center;
   align-items: center;
 }

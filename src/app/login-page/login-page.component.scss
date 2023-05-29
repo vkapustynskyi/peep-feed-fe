@@ -1,6 +1,12 @@
 @import "src/app/variables";
 
 :host {
+
+  .form-container {
+    background: $light-grey;
+    height: 100%
+  }
+
   .form {
     background-color: white;
     border-radius: 10px;
@@ -23,7 +29,7 @@
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .input-container {
@@ -41,11 +47,11 @@
   }
 
   .input {
-    background-color: #303245;
+    background-color: $light-grey;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
-    color: #eee;
+    color: $primary-color;
     font-size: 18px;
     height: 100%;
     outline: 0;
@@ -54,7 +60,7 @@
   }
 
   .cut {
-    background-color: #15172b;
+    background-color: white;
     border-radius: 10px;
     height: 20px;
     left: 20px;
@@ -75,7 +81,7 @@
   }
 
   .placeholder {
-    color: #65657b;
+    color: $primary-color;
     font-family: sans-serif;
     left: 20px;
     line-height: 14px;

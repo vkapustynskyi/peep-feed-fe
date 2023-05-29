@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" style="position: fixed">
+<mat-toolbar color="primary" class="site-header">
   <img (click)="goToProfilePage()" alt="logo" class="logo" src="../../assets/peep-feed-nobg.png"/>
   <span class="spacer"></span>
   <button *ngIf="authService.isAuthenticated() && userService.isAdmin()" class="button" mat-raised-button

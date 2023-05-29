@@ -1,0 +1,38 @@
+:host {
+  mat-grid-tile {
+    background: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    border-radius: 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .profile-info {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .profile-avatar {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: xx-large;
+  }
+
+  .profile-name {
+    padding: 10px;
+    font-size: x-large;
+  }
+
+
+}

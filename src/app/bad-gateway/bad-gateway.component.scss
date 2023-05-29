@@ -1,3 +1,4 @@
+@import "../variables";
 
 :host {
   display: flex;
@@ -9,7 +10,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #e7ecee;
+  background-color: $primary-color;
 
   h1 {
     font-size: 32px;

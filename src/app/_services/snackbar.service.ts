@@ -26,7 +26,8 @@ export class SnackbarService {
   }
 
   public showErrorSnackBar(err: any) {
-    const errorMessage = err ? err?.error : 'Unexpected error';
+    const errorMessage = typeof err === 'string' ? err
+      : err ? err?.error : 'Unexpected error';
     const panelClass = this.handleErrorType(err.status);
     this.showSnackbar(panelClass, errorMessage, 2500);
   }

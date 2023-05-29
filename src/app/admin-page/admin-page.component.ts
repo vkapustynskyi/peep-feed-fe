@@ -5,6 +5,7 @@ import {PostDto} from "../_models/PostDto";
 import {PostService} from "../_services/PostService";
 import {SnackbarService} from "../_services/snackbar.service";
 import {MainUserDto} from "../_models/MainUserDto";
+import {repeatWhen} from "rxjs";
 
 @Component({
   selector: 'app-admin-page',
@@ -23,9 +24,9 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.postService.getPostsToModerate()
+      .pipe(repeatWhen(() => this.postService.update$))
       .subscribe((posts: PostDto[]) => {
         this.posts = posts;
-        console.log(this.posts);
         this.snackbar.showSuccessSnackBar();
       });
     this.userService.getAllUsers()

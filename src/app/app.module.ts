@@ -36,6 +36,7 @@ import {PostComponent} from './post/post.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {AdminPageComponent} from './admin-page/admin-page.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { CommentComponent } from './comment/comment.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     UserProfileComponent,
     PostComponent,
     AdminPageComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

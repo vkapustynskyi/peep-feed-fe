@@ -25,7 +25,8 @@ export class PostService {
   }
 
   public delete(id: number): Observable<any> {
-    return this.http.delete(`/posts/${id}`);
+    return this.http.delete(`/posts/${id}`)
+      .pipe(tap(() => this.update$.next()));
   }
 
   public getPostsToModerate() {
@@ -33,10 +34,20 @@ export class PostService {
   }
 
   public approvePost(id: number) {
-    return this.http.patch(`/posts/${id}`, null);
+    return this.http.patch(`/posts/${id}`, null)
+      .pipe(tap(() => this.update$.next()));
   }
 
   public declinePost(id: number) {
-    return this.http.patch(`/posts/${id}/decline`, null);
+    return this.http.patch(`/posts/${id}/decline`, null)
+      .pipe(tap(() => this.update$.next()));
+  }
+
+  public like(id: number) {
+    return this.http.post(`/posts/${id}/like`, null);
+  }
+
+  public unlike(id: number) {
+    return this.http.post(`/posts/${id}/unlike`, null);
   }
 }

@@ -34,8 +34,6 @@
     </button>
 
     <div *ngIf="authService.isAuthenticated()" class="spacer"></div>
-<!--    <div *ngIf="showShare && authService.isAuthenticated()" class="spacer"></div>-->
-<!--    <button *ngIf="showShare && authService.isAuthenticated()" mat-button>SHARE</button>-->
     <button (click)="deletePost(post.id)" *ngIf="showDelete" class="right-corner-button" mat-button>
       <mat-icon>delete</mat-icon>
     </button>
@@ -59,5 +57,5 @@
       </button>
     </div>
   </form>
-
+  <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
 </mat-card>

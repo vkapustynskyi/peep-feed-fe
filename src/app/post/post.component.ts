@@ -6,6 +6,8 @@ import {PostService} from "../_services/PostService";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CommentCreationRequest} from "../_models/CommentCreationRequest";
 import {CommentService} from "../_services/CommentService";
+import {CommentDto} from "../_models/CommentDto";
+import {repeatWhen} from "rxjs";
 
 @Component({
   selector: 'app-post',
@@ -21,6 +23,7 @@ export class PostComponent implements OnInit {
   @Input() showDecline: boolean = false;
   showCommentArea: boolean = false;
   commentForm!: FormGroup;
+  comments: CommentDto[];
 
   constructor(
               private snackbarService: SnackbarService,
@@ -34,15 +37,27 @@ export class PostComponent implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
+    this.commentService.getComments(this.post.id)
+      .pipe(repeatWhen(() => this.commentService.update$))
+      .subscribe((comments: CommentDto[]) => {
+        this.comments = comments;
+      })
   }
 
   public toggleLike(post: PostDto): boolean {
     console.log(post.id);
     console.log(post.isLiked);
+
     if (post.isLiked) {
-      post.isLiked = false;
+      this.postService.unlike(post.id)
+        .subscribe(() => {
+          post.isLiked = false;
+        });
     } else {
-      post.isLiked = true;
+      this.postService.like(post.id)
+        .subscribe(() => {
+        post.isLiked = true;
+      });
     }
     this.snackbarService.showSuccessSnackBar();
     return this.post.isLiked;
@@ -51,7 +66,6 @@ export class PostComponent implements OnInit {
   deletePost(id: number) {
     this.postService.delete(id)
       .subscribe(() => {
-        window.location.reload();
         this.snackbarService.showSuccessSnackBar();
       });
   }
@@ -61,7 +75,6 @@ export class PostComponent implements OnInit {
   approve(id: number) {
     this.postService.approvePost(id)
       .subscribe(() => {
-        window.location.reload();
         this.snackbarService.showSuccessSnackBar();
       })
   }
@@ -69,7 +82,6 @@ export class PostComponent implements OnInit {
   decline(id: number) {
     this.postService.declinePost(id)
       .subscribe(() => {
-        window.location.reload();
         this.snackbarService.showSuccessSnackBar();
       })
   }

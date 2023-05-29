@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../_services/AuthenticationService";
 import {UserService} from "../_services/UserService";
 import {PostDto} from "../_models/PostDto";
 import {PostService} from "../_services/PostService";
 import {SnackbarService} from "../_services/snackbar.service";
+import {MainUserDto} from "../_models/MainUserDto";
 
 @Component({
   selector: 'app-admin-page',
@@ -12,10 +13,11 @@ import {SnackbarService} from "../_services/snackbar.service";
 })
 export class AdminPageComponent implements OnInit {
 
-  @Input() posts: PostDto[];
+  posts: PostDto[];
+  users: MainUserDto[];
 
   constructor(public authService: AuthenticationService,
-              public userService: UserService,
+              private userService: UserService,
               private postService: PostService,
               private snackbar: SnackbarService) { }
 
@@ -24,7 +26,20 @@ export class AdminPageComponent implements OnInit {
       .subscribe((posts: PostDto[]) => {
         this.posts = posts;
         this.snackbar.showSuccessSnackBar();
+      });
+    this.userService.getAllUsers()
+      .subscribe((users: MainUserDto[]) => {
+        this.users = users;
+        this.snackbar.showSuccessSnackBar();
       })
   }
 
+  toggleUserEnable(user: MainUserDto) {
+    this.userService.toggleUserEnable(user.id)
+      .subscribe(() => {
+        user.isEnabled = !user.isEnabled
+        this.snackbar.showSuccessSnackBar();
+      });
+
+  }
 }

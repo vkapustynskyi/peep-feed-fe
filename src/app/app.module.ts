@@ -36,6 +36,7 @@ import {MatDivider} from "@angular/material/divider";
 import { PostComponent } from './post/post.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     MatListModule,
     FormsModule,
     MatTooltipModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {

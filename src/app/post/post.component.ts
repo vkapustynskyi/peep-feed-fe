@@ -14,6 +14,8 @@ export class PostComponent implements OnInit {
   @Input() showLike: boolean = true;
   @Input() showShare: boolean = true;
   @Input() showDelete: boolean = false;
+  @Input() showApprove: boolean = false;
+  @Input() showDecline: boolean = false;
   constructor(
               private snackbarService: SnackbarService,
               public authService: AuthenticationService,
@@ -41,5 +43,23 @@ export class PostComponent implements OnInit {
         window.location.reload();
         this.snackbarService.showSuccessSnackBar();
       });
+  }
+
+  protected readonly window = window;
+
+  approve(id: number) {
+    this.postService.approvePost(id)
+      .subscribe(() => {
+        window.location.reload();
+        this.snackbarService.showSuccessSnackBar();
+      })
+  }
+
+  decline(id: number) {
+    this.postService.declinePost(id)
+      .subscribe(() => {
+        window.location.reload();
+        this.snackbarService.showSuccessSnackBar();
+      })
   }
 }

@@ -50,6 +50,7 @@ export class UserProfileComponent implements OnInit {
       }
       this.postService.post(request).subscribe(
         () => {
+          window.location.reload();
           this.snack.showSuccessSnackBar();
         });
     }

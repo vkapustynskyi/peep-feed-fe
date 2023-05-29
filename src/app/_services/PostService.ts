@@ -17,7 +17,23 @@ export class PostService {
     return this.http.get("/posts/my");
   }
 
+  public getFeedPosts() {
+    return this.http.get("/posts");
+  }
+
   public delete(id: number): Observable<any> {
     return this.http.delete(`/posts/${id}`);
+  }
+
+  public getPostsToModerate() {
+    return this.http.get("/posts/moderation");
+  }
+
+  public approvePost(id: number) {
+    return this.http.patch(`/posts/${id}`, null);
+  }
+
+  public declinePost(id: number) {
+    return this.http.patch(`/posts/${id}/decline`, null);
   }
 }

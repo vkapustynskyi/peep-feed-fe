@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {PostDto} from "../_models/PostDto";
+import {PostService} from "../_services/PostService";
+import {SnackbarService} from "../_services/snackbar.service";
+import {AuthenticationService} from "../_services/AuthenticationService";
 
 @Component({
   selector: 'app-home-page',
@@ -7,10 +11,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() {
+  posts: PostDto[];
+
+  constructor(private postService: PostService,
+              private snackbarService: SnackbarService,
+              public authService: AuthenticationService) {
   }
 
   ngOnInit(): void {
+    this.postService.getFeedPosts()
+      .subscribe((posts: PostDto[]) => {
+        this.posts = posts;
+        this.snackbarService.showSuccessSnackBar();
+      })
   }
 
 }

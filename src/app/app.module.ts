@@ -34,6 +34,8 @@ import {AuthGuard} from "./_guards/AuthGuard";
 import {MatListModule} from "@angular/material/list";
 import {MatDivider} from "@angular/material/divider";
 import { PostComponent } from './post/post.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { PostComponent } from './post/post.component';
     SignUpPageComponent,
     UserProfileComponent,
     PostComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { PostComponent } from './post/post.component';
     MatTabsModule,
     MatListModule,
     FormsModule,
+    MatTooltipModule,
   ],
   providers: [
     {

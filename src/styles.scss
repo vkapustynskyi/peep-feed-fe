@@ -68,3 +68,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+
+.profile-avatar {
+  vertical-align: middle;
+  border-radius: 50%;
+  background: lightblue !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+  font-size: xx-large;
+}
+
+.right-corner-button {
+  position: absolute !important;
+  top: 12px;
+  right: 12px;
+}

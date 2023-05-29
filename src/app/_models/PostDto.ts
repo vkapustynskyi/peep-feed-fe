@@ -1,8 +1,7 @@
 export interface PostDto {
-  uuid: string;
-  name: string;
-  description: string;
-  imgUrl: string;
-  price: number;
-  isFavourite: boolean;
+  id: number;
+  text: string;
+  likes: number;
+  isLiked: boolean;
+  author: string;
 }

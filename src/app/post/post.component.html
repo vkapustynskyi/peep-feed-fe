@@ -1,22 +1,18 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <div mat-card-avatar class="example-header-image">
+      <div alt="Avatar" class="profile-avatar">{{authService.getLocalUser().firstName.charAt(0)}}</div>
+    </div>
+    <mat-card-title *ngIf="post.author">{{post.author}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+  <mat-card-content style="margin-top: 20px">
+      {{post.text}}
   </mat-card-content>
   <mat-card-actions>
     <button
-      *ngIf="showIcon && authService.isAuthenticated()"
+      *ngIf="showLike && authService.isAuthenticated()"
       (click)="toggleLike(post)"
-      [class.active]="post.isFavourite"
+      [class.active]="showLike && post.isLiked"
       aria-label="Example icon button with a heart icon"
       class="favourite-icon"
       color="warn"
@@ -25,6 +21,7 @@
     >
       <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-button>SHARE</button>
+    <button *ngIf="showShare && authService.isAuthenticated()" mat-button>SHARE</button>
+    <button (click)="deletePost(post.id)" *ngIf="showDelete" class="right-corner-button" mat-button><mat-icon>delete</mat-icon></button>
   </mat-card-actions>
 </mat-card>

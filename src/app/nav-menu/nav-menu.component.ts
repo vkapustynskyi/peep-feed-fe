@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {navigationRoutes} from "../navigationRoutes";
 import {AuthenticationService} from "../_services/AuthenticationService";
-import {UserService} from "../_services/UserService";
 
 @Component({
   selector: 'app-nav-menu',
@@ -11,8 +10,7 @@ import {UserService} from "../_services/UserService";
 })
 export class NavMenuComponent implements OnInit {
   constructor(private router: Router,
-              public authService: AuthenticationService,
-              public userService: UserService) {
+              public authService: AuthenticationService) {
   }
 
   ngOnInit(): void {

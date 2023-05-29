@@ -1,11 +1,12 @@
   .example-card {
     margin-top: 30px;
     max-width: 400px;
+    min-width: 400px;
   }
 
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+  .profile-avatar {
+    width: 50px;
+    height: 50px;
   }
 
   .favourite-icon {

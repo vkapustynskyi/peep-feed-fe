@@ -51,8 +51,16 @@ export class AuthenticationService {
     this.router.navigate([navigationRoutes.home]);
   }
 
+  public isAdmin(): boolean {
+    return this.getLocalUser().role === "ADMIN";
+  }
+
+  public getLocalUser() {
+    return JSON.parse(localStorage.getItem("user"));
+  }
+
   private get _localStorageIsAuthenticated() {
     const isAuthenticated = localStorage.getItem("token");
-    return isAuthenticated ? true : false;
+    return !!isAuthenticated;
   }
 }

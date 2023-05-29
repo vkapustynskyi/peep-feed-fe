@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="site-header">
   <img (click)="goToProfilePage()" alt="logo" class="logo" src="../../assets/peep-feed-nobg.png"/>
   <span class="spacer"></span>
-  <button *ngIf="authService.isAuthenticated() && userService.isAdmin()" class="button" mat-raised-button
+  <button *ngIf="authService.isAuthenticated() && authService.isAdmin()" class="button" mat-raised-button
           routerLink="/admin">Admin panel
   </button>
   <button *ngIf="!authService.isAuthenticated()" class="button" id="login-button" mat-raised-button routerLink="/login">

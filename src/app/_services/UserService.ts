@@ -17,17 +17,4 @@ export class UserService {
   public getMyProfile(): Observable<MyProfileDto> {
     return this.http.get<MyProfileDto>("/users/profile");
   }
-
-  public isAdmin(): boolean {
-    const user = this.getLocalUser();
-    if (user === null) {
-      return false;
-    }
-    return user.role === "ADMIN";
-  }
-
-  private getLocalUser() {
-    // @ts-ignore
-    return JSON.parse(localStorage.getItem("user"));
-  }
 }

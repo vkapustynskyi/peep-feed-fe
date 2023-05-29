@@ -3,5 +3,6 @@ export interface MyProfileDto {
   firstName: string;
   lastName: string;
   email: string;
-  birthDay: string;
+  birthday: string;
+  role: string;
 }

@@ -35,7 +35,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    console.log()
+    if (this.loginForm.invalid) {
+      this.snack.showErrorSnackBar("All fields are required");
+      return;
+    }
     this.authenticationService.login(this.loginForm.get('nickname').value, this.loginForm.get('password').value)
       .pipe(first())
       .subscribe({
